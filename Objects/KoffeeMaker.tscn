@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/objects/koffee/koffeeMaker_low_def.png" type="Texture" id=1]
+[ext_resource path="res://Objects/Basic_Interactive_Solid.gd" type="Script" id=2]
+[ext_resource path="res://Character/Emote.tscn" type="PackedScene" id=3]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 66, 114 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ SubResource( 1 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="KoffeeMaker" type="Node2D"]
+script = ExtResource( 2 )
+interractive = true
+solid_obstacle = true
+
+[node name="Canvas" type="Node2D" parent="."]
+position = Vector2( 0, -160 )
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="Canvas"]
+input_pickable = true
+
+[node name="KoffeeMaker" type="AnimatedSprite" parent="Canvas/KinematicBody2D"]
+position = Vector2( 0, -38 )
+frames = SubResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Canvas/KinematicBody2D"]
+position = Vector2( -2.51984, -6.9296 )
+polygon = PoolVector2Array( 1.27352, -91.846, -20.5532, -83.909, -33.2525, -50.1767, -33.2525, 28.0028, 37.3869, 27.6059, 36.99, -47.0019, 33.0215, -87.0838 )
+
+[node name="Emote" parent="Canvas/KinematicBody2D" instance=ExtResource( 3 )]
+visible = false
+position = Vector2( 0, -160 )
+scale = Vector2( 4, 4 )
+animation = "word_action_color"
+frame = 2
+
+[connection signal="input_event" from="Canvas/KinematicBody2D" to="." method="_on_KinematicBody2D_input_event"]
+[connection signal="mouse_entered" from="Canvas/KinematicBody2D" to="." method="_on_KinematicBody2D_mouse_entered"]
+[connection signal="mouse_exited" from="Canvas/KinematicBody2D" to="." method="_on_KinematicBody2D_mouse_exited"]

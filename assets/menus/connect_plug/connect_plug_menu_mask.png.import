@@ -1,0 +1,15 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+path="res://.import/connect_plug_menu_mask.png-cf93eef8ff48fdb38728fbcbc72d6ac7.res"
+
+[deps]
+
+source_file="res://assets/menus/connect_plug/connect_plug_menu_mask.png"
+dest_files=[ "res://.import/connect_plug_menu_mask.png-cf93eef8ff48fdb38728fbcbc72d6ac7.res" ]
+
+[params]
+
+create_from=0
+threshold=0.5

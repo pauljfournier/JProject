@@ -1,0 +1,67 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Objects/mugPile.gd" type="Script" id=1]
+[ext_resource path="res://assets/objects/koffee/koffee_empty_mug_high_def.png" type="Texture" id=2]
+[ext_resource path="res://Character/Emote.tscn" type="PackedScene" id=3]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="MugPile" type="Node2D"]
+script = ExtResource( 1 )
+interractive = true
+solid_obstacle = true
+
+[node name="Canvas" type="Node2D" parent="."]
+position = Vector2( 0, -161 )
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="Canvas"]
+position = Vector2( 15, 0 )
+scale = Vector2( 0.4, 0.4 )
+input_pickable = true
+
+[node name="KoffeeMaker" type="AnimatedSprite" parent="Canvas/KinematicBody2D"]
+position = Vector2( -43.6381, -65.9182 )
+scale = Vector2( 0.25, 0.25 )
+frames = SubResource( 1 )
+offset = Vector2( 299.392, 230.788 )
+
+[node name="KoffeeMaker2" type="AnimatedSprite" parent="Canvas/KinematicBody2D"]
+position = Vector2( -101.936, 96.2573 )
+scale = Vector2( 0.25, 0.25 )
+frames = SubResource( 1 )
+offset = Vector2( 195.275, -396 )
+flip_h = true
+
+[node name="KoffeeMaker3" type="AnimatedSprite" parent="Canvas/KinematicBody2D"]
+position = Vector2( -49.2876, 120.311 )
+scale = Vector2( 0.25, 0.25 )
+frames = SubResource( 1 )
+offset = Vector2( 195.275, -396 )
+flip_h = true
+
+[node name="KoffeeMaker4" type="AnimatedSprite" parent="Canvas/KinematicBody2D"]
+position = Vector2( -53.8839, 62.4457 )
+scale = Vector2( 0.25, 0.25 )
+frames = SubResource( 1 )
+offset = Vector2( 195.275, -396 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Canvas/KinematicBody2D"]
+position = Vector2( 6.43472, -157.942 )
+polygon = PoolVector2Array( 69.0481, 132.922, 3.28717, 83.4244, -46.2103, 83.4244, -103.486, 135.75, -102.779, 183.834, -16.5118, 219.896, 25.9146, 219.896, 69.0481, 173.227 )
+
+[node name="Emote" parent="Canvas/KinematicBody2D" instance=ExtResource( 3 )]
+visible = false
+position = Vector2( -20.069, -151.385 )
+scale = Vector2( 4, 4 )
+animation = "word_get_color"
+frame = 0
+
+[connection signal="input_event" from="Canvas/KinematicBody2D" to="." method="_on_KinematicBody2D_input_event"]
+[connection signal="mouse_entered" from="Canvas/KinematicBody2D" to="." method="_on_KinematicBody2D_mouse_entered"]
+[connection signal="mouse_exited" from="Canvas/KinematicBody2D" to="." method="_on_KinematicBody2D_mouse_exited"]

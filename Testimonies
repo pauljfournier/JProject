@@ -1,0 +1,33 @@
+
+### Matteo Peruzzi ###
+
+What is your typical day as a pentester/red team member?
+
+It depends on what we are scheduled on, if we are on a pentest, we will test the stracture for the whole period, otherwise we research (not that much, the time is really short) or we spend time doing reports or internal administration.
+The typical day starts with reading the news, a quick check to the emails and straight into testing.
+
+What are typical tasks you do as a pentester/red team member?
+
+We have many tasks during a test, but they highly depend on the type of test we are running: for instance, if we are going through an authenticated penetration test, we'll scan the server with Nessus and start with the manual tests such as bruteforcing the structure, trying to find XSS, SQLInjections, checking the proxy history through burp...
+
+What could be good to experiment/discover/exercise to discover what it is to be a pentester/red team member?
+
+Well maybe shadowing a pentester would be the best way to see what a pentest looks like.
+
+
+
+### Dray Agha ###
+
+typical day and tasks
+- Check alerts from any honeypots/traps we have laid out
+- Check for any SIEM events that may be suspicious but not have tripped alerts
+- Read up on latest threats and zero-days
+- Tune up the SIEM stack and ensure the underlying technology is working as it should
+- Threat hunt in clients' environment by examining anamalous behaviour on machines.
+
+
+Good exercise to see what it is to be blue teamer
+- Recieve logs that definitely contain malicious activity, and have the participant analyse these and try to piece together the story of what the adversary did
+- Set up a SIEM stack (Elastic, Splunk etc) and see what creating dashboards and visualisations look like
+- Break down a new vulnerability / PoC and see if you can analyse it to create a defensive PoC - so an Nmap script, or PwSh script
+if I think of more, I will share them

@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Objects/Basic_Uninteractive_Solid.gd" type="Script" id=1]
+[ext_resource path="res://assets/characters/main_character/static idle.png" type="Texture" id=2]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 585, 140 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ SubResource( 1 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="JAE_sleeping" type="Node2D"]
+script = ExtResource( 1 )
+solid_obstacle = true
+
+[node name="Canvas" type="Node2D" parent="."]
+position = Vector2( 0, -80 )
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="Canvas"]
+input_pickable = true
+
+[node name="Computer" type="AnimatedSprite" parent="Canvas/KinematicBody2D"]
+scale = Vector2( -1.3, 1.3 )
+frames = SubResource( 2 )
+offset = Vector2( 180, -55 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Canvas/KinematicBody2D"]
+visible = false
+position = Vector2( -2.51984, -6.9296 )
+polygon = PoolVector2Array( -19.0101, -103.375, -46.7283, -69.9867, -47.6334, -44.571, -34.0454, 7.45586, 39.6831, 6.89639, 38.3163, -79.4361, 21.3074, -103.375 )
+
+[connection signal="input_event" from="Canvas/KinematicBody2D" to="." method="_on_KinematicBody2D_input_event"]
+[connection signal="mouse_entered" from="Canvas/KinematicBody2D" to="." method="_on_KinematicBody2D_mouse_entered"]
+[connection signal="mouse_exited" from="Canvas/KinematicBody2D" to="." method="_on_KinematicBody2D_mouse_exited"]
